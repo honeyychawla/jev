@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+const base = process.env.DEMO_URL || 'http://127.0.0.1:4318';
+const initial = await fetch(`${base}/api/state`);
+const cookie = initial.headers.get('set-cookie').split(';')[0];
+let state = await initial.json();
+const csrf = state.csrf;
+const headers = { cookie, Origin: base, 'Content-Type': 'application/json', 'X-CSRF-Token': csrf };
+async function message(text) {
+  const r = await fetch(`${base}/api/message`, { method: 'POST', headers, body: JSON.stringify({ message: text }) });
+  assert.equal(r.status, 200);
+  const events = (await r.text()).trim().split('\n').map(JSON.parse);
+  state = events.filter(e => e.type === 'state').at(-1).data;
+  if (state.failed) throw new Error(state.failed.error);
+  console.log(JSON.stringify({ message: text, cart: state.cart.items.map(({ name, size, quantity }) => ({ name, size, quantity })), total: state.cart.total, ready: state.ready, calls: state.activity.slice(-2).map(a => ({ id: a.response?.id, model: a.response?.model, latencyMs: a.latencyMs, answers: a.response?.answers })), reply: state.messages.at(-1)?.text }));
+  return state;
+}
+await message('One large mushroom pizza.');
+assert.equal(state.cart.items[0]?.size, 'large'); assert.equal(state.cart.total, 1800);
+await message('Actually, make it medium.');
+assert.equal(state.cart.items[0]?.size, 'medium'); assert.equal(state.cart.total, 1500);
+await message('Add a lemonade.');
+assert.equal(state.cart.items[1]?.menuId, 'lemonade'); assert.equal(state.cart.total, 1900);
+await message('That’s all.');
+assert.equal(state.ready, true); assert.equal(state.cart.total, 1900);
+const confirmed = await fetch(`${base}/api/confirm`, { method: 'POST', headers, body: JSON.stringify({ revision: state.revision }) });
+assert.equal(confirmed.status, 200); state = await confirmed.json(); assert.ok(state.order?.orderNumber.startsWith('DEMO-'));
+const saved = JSON.parse(await readFile(new URL(`../data/orders/${state.order.filename}`, import.meta.url), 'utf8'));
+assert.equal(saved.total, 1900); assert.equal(saved.demo, true);
+const duplicate = await fetch(`${base}/api/confirm`, { method: 'POST', headers, body: JSON.stringify({ revision: state.revision }) });
+assert.equal((await duplicate.json()).order.orderNumber, state.order.orderNumber);
+console.log('PASS: Real Jev conversation, local receipt, and duplicate-confirm protection.');
+await fetch(`${base}/api/reset`, { method: 'POST', headers, body: '{}' });
+await message('Two large pepperoni pizzas.'); assert.equal(state.cart.quantity, 2);
+await message('Remove one pepperoni pizza.'); assert.equal(state.cart.quantity, 1);
+await message('Remove the pepperoni pizza.'); assert.equal(state.cart.quantity, 0);
+console.log('PASS: Real Jev quantities and removal.');

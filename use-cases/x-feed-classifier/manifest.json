@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Sift \u2014 Powered by Jev",
+  "version": "2.1.0",
+  "description": "Your AI discovery filter for X. Personal read/skip decisions, Jev confidence, and optional image previews while you scroll.",
+  "minimum_chrome_version": "128",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://openrouter.ai/*",
+    "https://pbs.twimg.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Sift your feed",
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "32": "assets/icon32.png",
+      "128": "assets/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "assets/icon16.png",
+    "32": "assets/icon32.png",
+    "128": "assets/icon128.png"
+  },
+  "options_page": "popup.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none'"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "use-cases/x-feed-classifier/tests/e2e.mjs": [
+    "a59e8228a66f66e7eddf83e187a959d8f355b1072753687aebeec80c80927c4d"
+  ],
+  "use-cases/ai-chat/tests/backend.test.ts": [
+    "d03f909636b6e56f96651ece683bce7b6eaa3ee7b8379c3ef232bdd838425c8a",
+    "bd3bd9a3d8a124a048e90dd78fc48c19a09c507afd0ad52ff62ac2e5774b3c67"
+  ],
+  "use-cases/ai-chat/tests/ui.spec.ts": [
+    "ba161481b1b6ca34a0358655fff963e2a6d2f162bcf0bfc448cc55f3ed9f3dac"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "jev-shield",
+  "version": "0.2.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:browser": "node tests/browser.mjs",
+    "test:hardening": "node tests/hardening.mjs",
+    "test:permissions": "node tests/permissions.mjs",
+    "test:privacy": "node tests/privacy.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.1.14",
+    "@types/node": "^22.10.0",
+    "esbuild": "^0.25.0",
+    "playwright": "^1.58.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}

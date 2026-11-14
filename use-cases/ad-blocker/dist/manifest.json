@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Jev Shield",
+  "version": "0.2.2",
+  "description": "Find and hide likely display ads with Jev via OpenRouter. Your key, your sites, reversible decisions.",
+  "minimum_chrome_version": "120",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://openrouter.ai/*"
+  ],
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Jev Shield",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; connect-src https://openrouter.ai; base-uri 'none'"
+  }
+}

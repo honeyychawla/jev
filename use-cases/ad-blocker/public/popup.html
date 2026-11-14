@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jev Shield</title><link rel="stylesheet" href="styles.css"></head>
+<body class="popup">
+  <header class="topbar"><a class="brand" href="options.html" target="_blank"><span class="monogram" aria-hidden="true">j.</span>Jev Shield</a><button class="text-button" data-settings>Settings</button></header>
+  <main>
+    <section class="intro"><h1>A little less noise.</h1><p>Ad decisions by Jev. You stay in control.</p></section>
+    <section class="site-panel" aria-label="Current site"><div class="site-heading"><strong id="hostname">Loading…</strong><span id="state" class="status">Paused</span></div>
+      <div class="metrics"><div><span id="hidden-count" class="number">0</span><span>ads hidden</span></div><div><span id="checked-count" class="number small">0</span><span>blocks checked</span></div></div>
+      <button id="site-toggle" class="primary" disabled>Enable on this site</button>
+      <p id="page-note" class="caption" role="status">Reading this tab…</p>
+    </section>
+    <div id="setup" class="setup" hidden><p>Connect your OpenRouter key to start.</p><button class="text-button" data-settings>Set up Jev</button></div>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section class="review"><div class="section-title"><h2>Hidden on this page</h2><button id="restore-all" class="text-button" disabled>Restore all</button></div><p id="empty" class="empty">Hidden blocks will appear here. Restore any block with one click.</p><ul id="hidden-list" class="review-list"></ul></section>
+    <div class="control-row"><span>Hide above <strong id="threshold">90%</strong> confidence</span><button id="scan" class="text-button" disabled>Scan again</button></div>
+  </main>
+  <footer><span>Today's API requests</span><strong id="request-count">0 / 100</strong></footer>
+  <script src="popup.js"></script>
+</body></html>

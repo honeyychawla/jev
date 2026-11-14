@@ -1,0 +1,15 @@
+{
+  "name": "sift-powered-by-jev",
+  "version": "2.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "preview": "python3 -m http.server 4173 --bind 127.0.0.1",
+    "test:browser": "node tests/e2e.mjs",
+    "evaluate:live": "node tests/evaluate.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.65.1"
+  }
+}

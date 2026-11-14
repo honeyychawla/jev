@@ -1,0 +1,6 @@
+node_modules/
+data/
+OpenRouter Key.env
+.env*
+*.log
+.server.pid

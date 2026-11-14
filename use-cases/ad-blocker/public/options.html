@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Settings · Jev Shield</title><link rel="stylesheet" href="styles.css"></head>
+<body class="options">
+  <div class="settings-shell">
+    <header class="topbar"><a class="brand" href="options.html"><span class="monogram" aria-hidden="true">j.</span>Jev Shield</a><a class="text-link" href="https://openrouter.ai/typesafe/jev-1.14" target="_blank" rel="noreferrer">Jev on OpenRouter ↗</a></header>
+    <main class="settings-main">
+      <div class="settings-intro"><p class="eyebrow">YOUR BROWSER, YOUR CALL</p><h1>Make room for<br>what matters.</h1><p>Connect Jev, choose your sites, and keep the content you came for.</p></div>
+      <form id="settings-form">
+        <section class="settings-section"><div class="section-heading"><h2>Connect to Jev</h2><span id="connection" class="caption">Not connected</span></div>
+          <label for="api-key">OpenRouter API key</label><input id="api-key" type="password" autocomplete="off" spellcheck="false" maxlength="512" placeholder="sk-or-v1-…" aria-describedby="key-help">
+          <p id="key-help" class="help">Stored only in this browser profile. Sent only to OpenRouter. <a href="https://openrouter.ai/settings/keys" target="_blank" rel="noreferrer">Get an OpenRouter key ↗</a></p>
+          <p class="help">Model: Jev 1.14 by TypeSafe. You do not need a separate TypeSafe API key.</p>
+          <div class="button-row"><button id="test" type="button" class="secondary" disabled>Test connection</button><button id="forget" type="button" class="text-button" disabled>Remove key</button></div>
+          <div class="live-check"><button id="verify" type="button" class="secondary" disabled>Run live Jev check</button><p class="help">Uses one billable OpenRouter request with four fixed examples. No website content is sent.</p><div id="verification" class="notice" aria-live="polite" hidden></div></div>
+          <label class="consent" for="consent"><input id="consent" type="checkbox"><span>Allow Jev to check likely ads<span class="help">On sites I enable, send the hostname, ad structure, link hostnames and up to 180 characters of each candidate's text through OpenRouter to the Jev provider. API usage is billed to my OpenRouter account.</span></span></label>
+        </section>
+        <section class="settings-section"><h2>Decide what disappears</h2><div class="range-label"><label for="threshold-input">Ad confidence threshold</label><output id="threshold-value" for="threshold-input">90%</output></div><input id="threshold-input" type="range" min="70" max="99" step="1" value="90"><div class="range-ends"><span>Hide more</span><span>More cautious</span></div><p class="help">Start at 90%. Higher thresholds reduce accidental hides. You can restore individual blocks in the popup.</p>
+          <div class="limit-row"><div><label for="daily-limit">Daily request limit</label><p class="help">A request checks up to 12 candidates.</p></div><input id="daily-limit" type="number" min="1" max="1000" step="1" value="100" required></div><p id="usage" class="help"></p>
+        </section>
+        <div class="save-row"><button id="save" class="primary" type="submit">Save settings</button><span class="caption">Changes apply to enabled sites.</span></div><div id="notice" class="notice" role="status" hidden></div>
+      </form>
+      <section class="settings-section sites-section"><h2>Your enabled sites</h2><p id="no-sites" class="help">No sites yet. Visit a website, open Jev Shield, then choose “Enable on this site”.</p><ul id="sites" class="site-list"></ul></section>
+      <aside class="privacy-note"><h2>A few things to know</h2><p>Jev Shield hides visible display ads and sponsored blocks. It does not stop network trackers or video ads. Model decisions can be wrong.</p><p>Form values, passwords, cookies, screenshots and full URLs are not collected. Sign-in and payment-page checks are best effort; only enable sites whose snippets you are comfortable sharing. Keys are stored locally, not encrypted by this extension.</p><p>Independent prototype. Not an official TypeSafe product.</p></aside>
+    </main>
+    <footer><span>Jev via OpenRouter · Built with TypeScript</span><span>Your choices come first.</span></footer>
+  </div><script src="options.js"></script>
+</body></html>

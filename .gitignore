@@ -1,0 +1,27 @@
+# Dependencies, private runtime state, and local test output.
+node_modules/
+data/
+.qa/
+.env
+.env.*
+!.env.example
+OpenRouter Key.env
+*.sqlite
+*.sqlite-*
+*.db
+*.log
+*.pid
+*.pem
+*.key
+*client_secret*.json
+credentials*.json
+tokens*.json
+.encryption-key
+.DS_Store
+test-results/
+playwright-report/
+coverage/
+__pycache__/
+
+# Source snapshots intentionally include their original ready-built files.
+# The blank pizza key template is tracked explicitly on initial import.

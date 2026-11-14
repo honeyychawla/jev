@@ -1,0 +1,47 @@
+name: Verify collection
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: python3 scripts/verify_snapshot.py
+  demos:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - demo: ad-blocker
+            os: ubuntu-latest
+          - demo: pizza-ordering
+            os: macos-latest
+          - demo: ai-chat
+            os: ubuntu-latest
+          - demo: youtube-email-dashboard
+            os: ubuntu-latest
+          - demo: x-feed-classifier
+            os: ubuntu-latest
+    defaults:
+      run:
+        working-directory: use-cases/${{ matrix.demo }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install locked dependencies when present
+        run: if [ -f package-lock.json ]; then npm ci; fi
+      - name: Ensure Chrome is available for pizza browser fixtures
+        if: matrix.demo == 'pizza-ordering'
+        run: npx playwright install chrome
+      - run: npm test
+      - run: npm run typecheck --if-present
+      - run: npm run check --if-present
+      - run: npm run check:share --if-present
+      - run: npm run build --if-present

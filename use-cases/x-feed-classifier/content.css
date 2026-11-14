@@ -1,0 +1,7 @@
+article[data-testid="tweet"].sift-read{outline:1px solid #75b77566;outline-offset:-1px;background-color:#75b7750c}
+article[data-testid="tweet"].sift-slop [data-testid="tweetText"]{text-decoration-line:line-through;text-decoration-color:#ad766f;text-decoration-thickness:1px;opacity:.65}
+article[data-testid="tweet"].sift-muted>:not(.sift-verdict){opacity:.5}
+article[data-testid="tweet"].sift-muted:hover>:not(.sift-verdict),article[data-testid="tweet"].sift-muted:focus-within>:not(.sift-verdict){opacity:1}
+article[data-testid="tweet"].sift-positioned{position:relative}
+article[data-testid="tweet"] .sift-corner-room{box-sizing:border-box;padding-inline-end:52px;min-height:50px}
+article[data-testid="tweet"] .sift-media-room{margin-block-start:52px}

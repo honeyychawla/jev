@@ -1,0 +1,53 @@
+DOMINO'S + JEV — LOCAL MAC DEMO
+
+1. Download this ZIP from Drive and unzip it. Keep the whole folder together.
+   Move the folder to a local folder such as Documents before using it.
+
+2. Double-click Start Dominos.command.
+   This opens a Terminal window, but you do not need to type commands.
+   If Node.js or Chrome is missing, it opens the official download page.
+   Install the missing app, then double-click Start Dominos.command again.
+
+3. On first use, TextEdit opens OpenRouter Key.env.
+   Paste YOUR OWN OpenRouter key after OPENROUTER_API_KEY= and save.
+   Keep the file as plain text with its existing name.
+   Return to the launcher window and press Return.
+   Use an OpenRouter account with access/credit for typesafe/jev-1.14.
+
+4. The launcher installs dependencies and opens the app in your browser:
+   http://127.0.0.1:4319/
+   Jev requests use your OpenRouter account. Internet access is required.
+
+5. Try: "3 farmhouse pizza" then "large", then "make it 2".
+   Watch the Domino's screen, verified cart, Jev activity and task timer.
+   The initial store is 6585R. Set your location/address directly in Domino's
+   when asked; that can affect availability and prices.
+
+6. To stop the app, double-click Stop Demo.command.
+   To change the key: stop the app, use Edit OpenRouter Key.command,
+   save the new key, then start the app again.
+
+This package includes source code and the built interface. It does not
+include the sender's API key, browser session, cart, screenshots or history.
+No Codex account or public repository is needed to run the app.
+
+Once used, this folder contains YOUR key and browser/order data. Keep the
+working folder local. Share the original clean ZIP, not the used folder.
+
+If macOS asks you to review this downloaded launcher, use its normal
+security review process. Do not disable Gatekeeper or browser protections.
+
+This is an unofficial local demo. It stops before order submission/payment.
+You enter delivery details and complete any purchase yourself.
+Extra toppings require manual selection in the Domino's browser.
+Read ORDERING_RULES.md for supported commands and limits.
+
+Requirements: Mac, Node.js 22.12+ (LTS recommended), Google Chrome,
+internet, and your own OpenRouter API key.
+Official installers: https://nodejs.org/en/download
+                     https://www.google.com/chrome/
+
+If the page reports an API error, check your OpenRouter key, account credit
+and model access. The app stops when the API fails; it does not simulate Jev.
+Startup errors are in server.log. A busy port may require stopping an older
+copy or changing the port in local-config.json.
