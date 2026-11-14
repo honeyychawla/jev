@@ -1,0 +1,23 @@
+# Emote — animated emoji search
+
+Copy this entire prompt into your coding assistant:
+
+```text
+Build and launch a complete small local web app called Emote that turns whatever I type into relevant emoji suggestions using TypeSafe AI’s real Jev decision model through OpenRouter. I mean TypeSafe AI, not just type-safe TypeScript. Focus the experience on finding and inserting emojis, with one search field rather than a conversational chatbot.
+
+Make it professional and minimalist, like a clean Google search page: white background, generous empty space, a small “emote.” wordmark, and one centered rounded input. Show matching emojis in a simple row beneath it. Keep All emoji and the settings gear small. Use native emoji glyphs so the results feel like a normal keyboard, and make the interface work on desktop and mobile without clipping or horizontal scrolling.
+
+Scatter a decorative selection of emojis into a slightly rotated, overlapping pile at the bottom of the screen, as though they have fallen there. As I type and suggestions arrive, the matching emojis should visibly rise from this pile, travel the full distance to the suggestion row, and settle with a subtle overshoot. When I delete any text, immediately drop the displayed suggestions back with gravity-like acceleration and a small bounce. Clearing the input drops everything. If the remaining text still has matches, fresh results may rise after a short pause. When the meaning changes, old matches fall while new ones rise. Keep each glyph continuous during flight, with no duplicate stationary copies, jumps, or orphaned sprites. Handle rapid edits, reversal mid-flight, reordered results, and resizing. Respect reduced-motion preferences, and keep typing responsive throughout.
+
+Use React, TypeScript, and Vite with a local Express backend, served at http://127.0.0.1:5173. Use the official TypeSafe SDK with OpenRouter’s supported System One integration and Jev Choice decisions. The original target is Jev 1.13, configurable through a model setting; verify current official support before implementing and explain any unavailable model or access requirement. Do not silently substitute a different model or claim that a local keyword result came from Jev.
+
+Use a complete modern emoji dataset such as Emojibase, including flags, professions, joined sequences, gender variants, and skin tones. Every emoji should be reachable. For efficient model selection, rank catalog-derived categories first, then emojis in the strongest categories, respecting provider option limits. Combine the results, collapse redundant skin-tone families, and show up to eight suggestions. Include a searchable full emoji picker with categories and a skin-tone choice.
+
+Wait about 450 milliseconds after typing before requesting suggestions. Cancel obsolete requests and ignore stale responses. Keep previous suggestions while additional text is processing, but drop them immediately on deletion. Bound caching, concurrent requests, and request frequency. Clicking an emoji must insert it at my current cursor position without losing focus. Include Enter to search, Escape to clear, a clear button, Copy text, accessible labels, keyboard navigation, loading feedback, and useful retry controls.
+
+Make OpenRouter setup easy. In Settings, provide a masked API-key field, Save & test connection, and Test saved key. Validate the key on the backend with OpenRouter and a small real Jev request before saving it. A failed replacement must leave the previous key intact. Store credentials only in a private local environment file with restricted permissions. Clear the key field after saving and never return the saved secret to the browser, browser storage, logs, or shared packages. Show the actual local file path for manual configuration and reload changes without restarting the app. Distinguish a detected key from a verified connection. Without a key, offer a clearly labeled local keyword preview.
+
+Bind the server to loopback, validate inputs, and protect settings changes against requests from other websites. Explain that settled input goes to OpenRouter and TypeSafe when AI is enabled and that each person needs their own key and credits.
+
+Deliver the runnable project, dependency lockfile, clear setup instructions, and a Mac double-click launcher. Build it, inspect the real interface, and test key handling, provider failures, stale requests, cursor insertion, full-catalog access, mobile layout, rise-and-fall motion, rapid reversal, and reduced motion. Use mocked providers and fake keys for automated tests. Create a clean ZIP without personal credentials or runtime data and finish with the local URL, launch steps, and honest verification results.
+```

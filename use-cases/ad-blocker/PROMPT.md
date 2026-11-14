@@ -1,0 +1,21 @@
+# Jev Shield — display-ad blocker
+
+Copy this entire prompt into your coding assistant:
+
+```text
+Build me a complete Chrome and Edge browser extension called Jev Shield that uses the real Jev model from TypeSafe AI through my OpenRouter account to identify likely display ads and hide them. I am new to installing extensions, so handle the build and packaging and give me simple, precise installation instructions when finished.
+
+Use TypeScript and a Manifest V3 extension. Start with Jev 1.14 through OpenRouter and verify the official request format before implementing it. Jev should make the ad-classification decision; do not present keyword rules or simulated replies as real AI results. This prototype should hide visible banner ads and sponsored blocks reversibly. Explain its actual limits, including that it does not block network trackers or YouTube video ads.
+
+Make the popup clean and easy to understand: Enable on this site or Pause on this site, blocks checked, ads hidden, Scan again, Restore all, and Settings. Use clear statuses for disconnected, scanning, paused, and failed. Add a professional, readable settings page that works in light and dark themes and narrow windows. Tell me exactly where to paste my own OpenRouter API key. Use a masked key field, a consent checkbox, Save settings, Test connection, Remove key, and Run live Jev check. Distinguish checking the key from making a real model request. The live check should use a few clearly labeled synthetic examples and explain that it makes a billable API call.
+
+Only scan websites I explicitly enable. Request the appropriate site permission from a user click, with manifest patterns that actually match the runtime permission request. Begin scanning immediately after permission is granted and continue working after reload. Keep the API key in trusted extension storage, inaccessible to page scripts and content scripts. Never embed it in source or a shared ZIP, log it, export cookies, or read an existing browser profile.
+
+Find likely ad containers from visible labels, sponsored attributes, ad-related structure, and known advertising links. Send only bounded, relevant descriptions to Jev, not whole pages or form values. Hide candidates only when Jev is sufficiently confident, initially at least 90 percent. Keep ordinary content visible. Give every hidden item a way to restore it, and preserve its original appearance when restored. Make uncertain answers, missing answers, malformed responses, and API failures leave content visible.
+
+Handle dynamic sites, infinite content updates, reused page elements, and single-page navigation. Continuous page changes must not postpone scans forever. If a hidden ad container becomes ordinary content, restore it and reconsider it. Changing the threshold should reuse valid decisions instead of paying for another scan. Bound batch size, page work, concurrency, cache size, and daily request attempts. Show errors and allow an explicit retry without uncontrolled automatic retries. Pausing or revoking consent should stop new work and restore the page.
+
+Protect sensitive pages and visible sign-in or payment forms. An invisible payment iframe or closed login form on a public news page must not incorrectly disable all scanning. Opening a sensitive form should pause and restore content; closing it should allow appropriate scanning again. Never inspect private messages, checkout details, passwords, or payment information.
+
+Test the actual extension with mocked API responses in isolated browser profiles. Cover consent, native permission configuration, first activation, reload, dynamic content, restore, pause, key isolation, malformed replies, rate limits, hidden payment frames, visible sensitive forms, and browser restarts. Report interactive or live checks separately if they cannot be completed. Deliver a ready-built extension folder, a clean ZIP with no credentials, and beginner-friendly steps for Load unpacked, selecting the exact dist folder, adding an OpenRouter key, testing it, enabling a site, and updating the same installed folder. Open the finished settings or installation location locally and explain any remaining user action without claiming untested success.
+```
